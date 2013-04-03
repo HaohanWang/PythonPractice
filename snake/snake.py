@@ -161,6 +161,8 @@ def drawSnakeCell(canvas, snakeBoard, row, col):
     top = margin + row * cellSize
     bottom = top + cellSize
     canvas.create_rectangle(left, top, right, bottom, fill="white")
+    rows=len(snakeBoard)
+    cols=len(snakeBoard[0])
     if (snakeBoard[row][col] > 0):
         # draw part of the snake body
 	global life
@@ -168,7 +170,9 @@ def drawSnakeCell(canvas, snakeBoard, row, col):
         	canvas.create_oval(left, top, right, bottom, fill="yellow")
 	else:
         	canvas.create_oval(left, top, right, bottom, fill="blue")
-    elif (snakeBoard[row][col] == -1):
+    if row >= rows*0.2 and row <rows*0.5:
+	    canvas.create_rectangle(left, top, right, bottom, fill="blue")
+    if (snakeBoard[row][col] == -1):
         # draw food
         canvas.create_oval(left, top, right, bottom, fill="green")
     elif (snakeBoard[row][col]==-2):
